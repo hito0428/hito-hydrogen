@@ -2,10 +2,18 @@ import * as serverBuild from 'virtual:react-router/server-build';
 import {createRequestHandler, storefrontRedirect} from '@shopify/hydrogen';
 import {createHydrogenRouterContext} from '~/lib/context';
 
+interface Env {
+  SESSION_SECRET: string;
+  PUBLIC_STOREFRONT_API_TOKEN?: string;
+  PRIVATE_STOREFRONT_API_TOKEN?: string;
+  PUBLIC_STORE_DOMAIN?: string;
+  PUBLIC_STOREFRONT_ID?: string;
+}
+
 export async function fetch(
   request: Request,
   env: Env,
-  executionContext: ExecutionContext,
+  executionContext?: ExecutionContext,
 ): Promise<Response> {
   try {
     const hydrogenContext = await createHydrogenRouterContext(
