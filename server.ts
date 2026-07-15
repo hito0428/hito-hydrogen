@@ -51,3 +51,7 @@ export async function fetch(
     return new Response('An unexpected error occurred', {status: 500});
   }
 }
+
+export default async function handler(request: Request, env: Env) {
+  return fetch(request, env);
+}
