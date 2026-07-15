@@ -12,7 +12,7 @@ export default async function handler(request: Request) {
       PUBLIC_STOREFRONT_ID: process.env.PUBLIC_STOREFRONT_ID,
     };
 
-    const serverBuild = await import('../dist/server/index.js');
+    const serverBuild = await import('../build/server/index.js');
     
     if (typeof serverBuild.fetch === 'function') {
       return serverBuild.fetch(request, env);
