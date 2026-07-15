@@ -10,7 +10,6 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   build: {
-    outDir: 'build',
     assetsInlineLimit: 0,
     ssr: true,
     rollupOptions: {
