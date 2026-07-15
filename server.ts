@@ -10,7 +10,7 @@ interface Env {
   PUBLIC_STOREFRONT_ID?: string;
 }
 
-export async function fetch(
+async function handleRequest(
   request: Request,
   env: Env,
   executionContext?: ExecutionContext,
@@ -52,6 +52,12 @@ export async function fetch(
   }
 }
 
-export default async function handler(request: Request, env: Env) {
-  return fetch(request, env);
+export async function fetch(
+  request: Request,
+  env: Env,
+  executionContext?: ExecutionContext,
+): Promise<Response> {
+  return handleRequest(request, env, executionContext);
 }
+
+export default {fetch};

@@ -13,6 +13,17 @@ declare global {
   interface HydrogenCustomCartFragment extends CartApiQueryFragment {}
 }
 
+async function getCache() {
+  if (typeof caches !== 'undefined') {
+    try {
+      return await caches.open('hydrogen');
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
 export async function createHydrogenRouterContext(
   request: Request,
   env: Env,
@@ -24,7 +35,7 @@ export async function createHydrogenRouterContext(
 
   const waitUntil = executionContext?.waitUntil.bind(executionContext) || ((promise: Promise<unknown>) => promise);
   const [cache, session] = await Promise.all([
-    caches.open('hydrogen'),
+    getCache(),
     AppSession.init(request, [env.SESSION_SECRET]),
   ]);
 
