@@ -1,15 +1,4 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "functions": {
-    "dist/server/index.js": {
-      "runtime": "@vercel/edge"
-    }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/server/index.js"
-    }
-  ]
+  "outputDirectory": "dist"
 }
