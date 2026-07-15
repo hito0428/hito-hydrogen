@@ -4,4 +4,4 @@ export const config = {
   runtime: 'edge',
 };
 
-export {fetch};
+export default fetch;
