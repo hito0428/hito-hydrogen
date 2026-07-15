@@ -11,6 +11,11 @@ export default defineConfig({
   build: {
     assetsInlineLimit: 0,
     ssr: true,
+    rollupOptions: {
+      output: {
+        format: 'es',
+      },
+    },
   },
   ssr: {
     optimizeDeps: {
